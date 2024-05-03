@@ -3,14 +3,14 @@
 Esta es la parte del front de este proyecto, realizado para facilitar la creación de listas de la compra que se añadirían a una nevera virtual para tener mayor control de las necesidades de comprar en todo momento, aparte de poder compartir recetas.
 
 ## Tabla de contenidos
-- [Instalación](#Instalación)
-- [Uso](#Uso)
-- [Por Hacer](#Por-Hacer)
-- [Construido con](#Construido-con)
-- [Autor](#Autor)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Por Hacer](#por-hacer)
+- [Construido con](#construido-con)
+- [Autor](#autor)
 
 ## Instalación 🚀
-Clonar el repositorio, luego en una terminal ejecutar npm i para instalar todos los módulos necesarios para el funcionamiento de la aplicación. Una vez hecho esto, se tiene que generar el archivo .env VITE_SERVER_URL="" y sustituir las comillas por el endpoint a usar. Hecho esto, usar el comando npm run dev.
+Clonar el repositorio, luego en una terminal ejecutar `npm i` para instalar todos los módulos necesarios para el funcionamiento de la aplicación. Una vez hecho esto, se tiene que generar el archivo `.env` con `VITE_SERVER_URL=""` y sustituir las comillas por el endpoint a usar. Hecho esto, usar el comando `npm run dev`.
 
 ## Uso 
 Una vez inicializado Vite nos proporcionará una URL como: http://localhost:5173/
