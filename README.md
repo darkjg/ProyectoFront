@@ -5,7 +5,7 @@ Esta es la parte del front de este proyecto, realizado para facilitar la creaci�
 ## Tabla de contenidos
 - [Instalación](#Instalación)
 - [Uso](#Uso)
-- [Por Hacer](#Por-hacer)
+- [Por Hacer](#Por-Hacer)
 - [Construido con](#Construido-con)
 - [Autor](#Autor)
 
