@@ -4,12 +4,9 @@ Esta es la parte del front de este proyecto , realizado para facilitar la creaci
 ## Tabla de contenidos
 - [Instalacion](#Instalacion)
 - [Uso](#Uso)
-- [License](#license)
-- [Otros Ejemplos](#otros-ejemplos)
-  - [Bloques de códigos](#bloques-de-códigos)
-  - [Resaltar texto](#resaltar-texto)
-  - [Badges](#badges)
-  - [Imagen](#imagen)
+- [PorHacer] (#PorHacer)
+- [Construidocon] (#Construidocon)
+- [Autor] (#Autor)
 
 
 ## Instalacion 🚀
@@ -38,3 +35,23 @@ En la paguina de Crear Recetas o Actualizar ![CrearReceta](imgs/CrearReceta.PNG)
 Por ultimo tendremos el Logout , que nos servira para desconectarnos.
 
 
+## Por hacer 
+    De momento me gustaria a futuro poder:
+    - Mejorar las css 
+    - Añadir que al realizar una receta, que este pueda consumir directamente los ingredientes de la nevera
+    - En Caso de agotar existencias de un producto , que se genere una lista de forma automatica y se añadan para ir comprandolo
+    - Que se puedan elegir productos que no queremos que se introduzcan en una lista
+    - Que se pueda ver distintos precios de diferentes supermercados al hazcer click en un producto de una lista
+    - Una aplicacion movil 
+
+## Construido con 🛠️
+
+    -React: 18.2.0
+    -React-dom: 18.2.0
+    -React-icons: 5.1.0
+    -React-router-dom: 6.22.3
+    -Vite: 5.2.0
+
+
+## Autor ✒️
+    Jorge González Costa
