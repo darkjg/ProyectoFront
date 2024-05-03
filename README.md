@@ -13,12 +13,14 @@ Esta es la parte del front de este proyecto, realizado para facilitar la creaci�
 Clonar el repositorio, luego en una terminal ejecutar npm i para instalar todos los módulos necesarios para el funcionamiento de la aplicación. Una vez hecho esto, se tiene que generar el archivo .env VITE_SERVER_URL="" y sustituir las comillas por el endpoint a usar. Hecho esto, usar el comando npm run dev.
 
 ## Uso 
-Una vez inicializado Vite nos proporcionará una URL como: http://localhost:5173/. Se nos mostrará la home:
+Una vez inicializado Vite nos proporcionará una URL como: http://localhost:5173/
+- Se nos mostrará la home:
 ![Home](imgs/Home.PNG)
 
-En la barra lateral podremos ver la navegación, la página de Registro:
+En la barra lateral podremos ver la navegación
+-La página de Registro:
 ![Registro](imgs/Registro.PNG)
-Y Login:
+-Y Login:
 ![Login](imgs/Login.PNG)
 
 Lo primero será registrarnos para poder acceder al Login y así acceder a todo el contenido.
