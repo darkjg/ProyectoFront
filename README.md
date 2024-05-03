@@ -1,57 +1,73 @@
 # Lista de la compra-(Front)
-Esta es la parte del front de este proyecto , realizado para facilitar la creacion de listas de la compra que se añadirian a una nevera virtual para tener mayor control de las necesidades de comprar en todo momento aparte de poder compartir recetas
+
+Esta es la parte del front de este proyecto, realizado para facilitar la creación de listas de la compra que se añadirían a una nevera virtual para tener mayor control de las necesidades de comprar en todo momento, aparte de poder compartir recetas.
 
 ## Tabla de contenidos
-- [Instalacion](#Instalacion)
+- [Instalación](#Instalación)
 - [Uso](#Uso)
-- [Por Hacer] (#Por-hacer)
-- [Construido con] (#Construido-con)
-- [Autor] (#Autor)
+- [Por Hacer](#Por-hacer)
+- [Construido con](#Construido-con)
+- [Autor](#Autor)
 
-
-## Instalacion 🚀
-Clonar el repositorio, luego en una terminal ejecutar npm i para instalar todos los modulos necesarios para el funcionamiento de la aplicacion una vez se tiene que generarel archivo .env VITE_SERVER_URL="" y substituir las comillas por el endpoint a usar, hecho esto usar el comando npm run dev
-
+## Instalación 🚀
+Clonar el repositorio, luego en una terminal ejecutar npm i para instalar todos los módulos necesarios para el funcionamiento de la aplicación. Una vez hecho esto, se tiene que generar el archivo .env VITE_SERVER_URL="" y sustituir las comillas por el endpoint a usar. Hecho esto, usar el comando npm run dev.
 
 ## Uso 
-Una vez inicializado  vite nos proporcionarar una url como : http://localhost:5173/ y se nos mostrara la home  ![Home](imgs/Home.PNG), en la barra lateral podremos ver la navegacion la paguina de Registro ![Registro](imgs/Registro.PNG) y Login ![Login](imgs/Login.PNG)
+Una vez inicializado Vite nos proporcionará una URL como: http://localhost:5173/. Se nos mostrará la home:
+![Home](imgs/Home.PNG)
 
-lo primero sera registrarnos para poder acceder al Login y asi acceder a todo el contenidos
-una vez Logueados tendremos las siguientes ventanas
-La Home  ![HomeLoguado](imgs/HomeLoguado.PNG)En la que ademas de ver la receta del mes, podremos ver las listas que tenemos pendientes
+En la barra lateral podremos ver la navegación, la página de Registro:
+![Registro](imgs/Registro.PNG)
+Y Login:
+![Login](imgs/Login.PNG)
 
-La nevera ![Nevera](imgs/Nevera.PNG) Donde podremos ver todos los ingredientes que tenemos guardados
+Lo primero será registrarnos para poder acceder al Login y así acceder a todo el contenido.
+Una vez logueados tendremos las siguientes ventanas:
 
-Las listas ![Listas](imgs/CrearListas.PNG) Donde podremos ver nuestras listas ya creadas al hacer click en su nombre , eliminarlas al hacer click en el boton de eliminar o crear una nueva lista
+- La Home:
+![HomeLogueado](imgs/HomeLogueado.PNG)
+Aquí, además de ver la receta del mes, podremos ver las listas que tenemos pendientes.
 
-En caso de hacer click en el nombre de una lista nos llevara a editar la lista  ![EditarLista](imgs/EditarListas.PNG) Aqui podemos cambiar el nombre de la lista, ver los productos que tenemos en la lista o añadir nuevos productos a esta 
+- La nevera:
+![Nevera](imgs/Nevera.PNG)
+Donde podremos ver todos los ingredientes que tenemos guardados.
 
-Por ultimo tendremos la paguina de Recetas ![Recetas](imgs/Recetas.PNG) Aqui podremos ver las distintas recetas creadas por toda la comunidad, obtener las recetas segun lo que tenemos en la nevera, la que se ha calificado como la mejor del mes o por ultimo buscar recetas por un ingrediete.
-Ademas podremos editar las ya existentes con el boton actualizar, eliminarlas o Crear nuevas recetas con el boton de Crear recetas
+- Las listas:
+![Listas](imgs/CrearListas.PNG)
+Donde podremos ver nuestras listas ya creadas al hacer click en su nombre, eliminarlas al hacer click en el botón de eliminar o crear una nueva lista.
 
-En la paguina de Crear Recetas o Actualizar ![CrearReceta](imgs/CrearReceta.PNG) Podremos Crear nuevas recetas Añadiendo un nombre a esta , explicando como se realiza, y añadiendo los ingredientes que se usaran para llevar a cabo esta receta.
+- En caso de hacer click en el nombre de una lista nos llevará a editar la lista:
+![EditarLista](imgs/EditarListas.PNG)
+Aquí podemos cambiar el nombre de la lista, ver los productos que tenemos en la lista o añadir nuevos productos a esta.
 
+- Por último, tendremos la página de Recetas:
+![Recetas](imgs/Recetas.PNG)
+Aquí podremos ver las distintas recetas creadas por toda la comunidad, obtener las recetas según lo que tenemos en la nevera, la que se ha calificado como la mejor del mes o por último buscar recetas por un ingrediente.
+Además, podremos editar las ya existentes con el botón actualizar, eliminarlas o crear nuevas recetas con el botón de Crear recetas.
 
-Por ultimo tendremos el Logout , que nos servira para desconectarnos.
+- En la página de Crear Recetas o Actualizar:
+![CrearReceta](imgs/CrearReceta.PNG)
+Podremos crear nuevas recetas añadiendo un nombre a esta, explicando cómo se realiza y añadiendo los ingredientes que se usarán para llevar a cabo esta receta.
 
+Por último, tendremos el Logout, que nos servirá para desconectarnos.
 
-## Por hacer
-    De momento me gustaria a futuro poder:
-    - Mejorar las css 
-    - Añadir que al realizar una receta, que este pueda consumir directamente los ingredientes de la nevera
-    - En Caso de agotar existencias de un producto , que se genere una lista de forma automatica y se añadan para ir comprandolo
-    - Que se puedan elegir productos que no queremos que se introduzcan en una lista
-    - Que se pueda ver distintos precios de diferentes supermercados al hazcer click en un producto de una lista
-    - Una aplicacion movil 
+## Por hacer 
+De momento me gustaría a futuro poder:
+- Mejorar las CSS.
+- Añadir que al realizar una receta, esta pueda consumir directamente los ingredientes de la nevera.
+- En caso de agotar existencias de un producto, que se genere una lista de forma automática y se añadan para ir comprándolo.
+- Que se puedan elegir productos que no queremos que se introduzcan en una lista.
+- Que se pueda ver distintos precios de diferentes supermercados al hacer click en un producto de una lista.
+- Una aplicación móvil.
 
 ## Construido con 🛠️
 
-    -React: 18.2.0
-    -React-dom: 18.2.0
-    -React-icons: 5.1.0
-    -React-router-dom: 6.22.3
-    -Vite: 5.2.0
-
+- React: 18.2.0
+- React-dom: 18.2.0
+- React-icons: 5.1.0
+- React-router-dom: 6.22.3
+- Vite: 5.2.0
 
 ## Autor ✒️
-    Jorge González Costa
+
+Jorge González Costa
