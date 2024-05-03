@@ -70,7 +70,7 @@ const Registro = () => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setpassword(e.target.value)}
             className="input-field"
           />
         </div>
