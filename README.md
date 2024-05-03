@@ -4,8 +4,8 @@ Esta es la parte del front de este proyecto , realizado para facilitar la creaci
 ## Tabla de contenidos
 - [Instalacion](#Instalacion)
 - [Uso](#Uso)
-- [PorHacer] (#PorHacer)
-- [Construidocon] (#Construidocon)
+- [Por Hacer] (#Por-hacer)
+- [Construido con] (#Construido-con)
 - [Autor] (#Autor)
 
 
@@ -35,7 +35,7 @@ En la paguina de Crear Recetas o Actualizar ![CrearReceta](imgs/CrearReceta.PNG)
 Por ultimo tendremos el Logout , que nos servira para desconectarnos.
 
 
-## Por hacer 
+## Por hacer
     De momento me gustaria a futuro poder:
     - Mejorar las css 
     - Añadir que al realizar una receta, que este pueda consumir directamente los ingredientes de la nevera
