@@ -44,7 +44,7 @@ function Navbar({ isLoggedIn, handleLogout }) {
                     </>
                 ) : (
                     <>
-                         <li><Link to="/Recetas">Recetas</Link></li>
+                         
                         <li><Link to="/Login">Login</Link></li>
                         <li><Link to="/Registro">Registro</Link></li>
                     </>
