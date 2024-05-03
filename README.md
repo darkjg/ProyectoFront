@@ -17,7 +17,7 @@ Una vez inicializado Vite nos proporcionará una URL como: http://localhost:5173
 - Se nos mostrará la home:
 ![Home](imgs/Home.PNG)
 
-En la barra lateral podremos ver la navegación
+En la barra lateral podremos ver la navegación.
 -La página de Registro:
 ![Registro](imgs/Registro.PNG)
 -Y Login:
