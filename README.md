@@ -17,4 +17,4 @@ Clonar el repositorio, luego en una terminal ejecutar npm i para instalar todos 
 
 
 ## Uso 
-Una vez inicializado  vite nos proporcionarar una url como : http://localhost:5173/ y se nos mostrara la home (/imgs/Home.png)
+Una vez inicializado  vite nos proporcionarar una url como : http://localhost:5173/ y se nos mostrara la home  ![Home](/imgs/Home.png)
