@@ -1,57 +1,58 @@
 import React, { useState, useEffect } from "react";
 import SERVER_URL from "../Config/config";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import "../css/Nevera.css"
+import "../css/Nevera.css";
+import removeAccents from "remove-accents";
 
 const Nevera = () => {
-
   const [nevera, setNevera] = useState({});
   const [neveraId, setNeveraId] = useState("");
   const [nuevoProducto, setNuevoProducto] = useState("");
   const [nuevaCantidad, setNuevaCantidad] = useState("");
   const [tipoCantidad, setTipoCantidad] = useState("");
+  const [unidadesCantidad, setUnidadesCantidad] = useState("KG");
+  const [precioProducto, setPrecioProducto] = useState(0);
   const [error, setError] = useState("");
   const [productoEditando, setProductoEditando] = useState(null);
   const [nombreEditando, setNombreEditando] = useState("");
   const [cantidadEditando, setCantidadEditando] = useState("");
   const [tipoEditando, setTipoEditando] = useState("");
+  const [unidadesEditando, setUnidadesEditando] = useState("");
+  const [precioEditando, setPrecioEditando] = useState(0);
   const [nombreNeveraEditando, setNombreNeveraEditando] = useState("");
+  const [imagenProducto, setImagenProducto] = useState(null);
 
+  const normalizeName = (name) => {
+    return removeAccents(name.toLowerCase());
+  };
 
-  // Función para cargar la lista de nevera 
   const cargarnevera = async () => {
     if (neveraId) {
       try {
         const response = await fetch(`${SERVER_URL}/nevera/${neveraId}`);
         const data = await response.json();
         setNevera(data.nevera);
-
       } catch (error) {
         console.error("Error al cargar las nevera:", error);
       }
     }
   };
 
-
-
   const cambiarNombreNevera = async () => {
-    setNombreNeveraEditando(nevera.nombre)
-    const neveraActualizada = nevera
-    neveraActualizada.nombre = nombreNeveraEditando
+    setNombreNeveraEditando(nevera.nombre);
+    const neveraActualizada = nevera;
+    neveraActualizada.nombre = nombreNeveraEditando;
     setNevera(neveraActualizada);
 
-    // Enviar los datos actualizados al servidor
     await fetch(`${SERVER_URL}/nevera/update/${nevera._id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(neveraActualizada)
+      body: JSON.stringify(neveraActualizada),
     });
+  };
 
-  }
-
-  // Función para obtener el ID de la nevera asociada al usuario
   const obtenerIdNeveraUsuario = async () => {
     try {
       const userEmail = localStorage.getItem("user");
@@ -70,29 +71,30 @@ const Nevera = () => {
     }
   };
 
-  // Función para agregar un nuevo producto a la nevera
   const agregarProducto = async () => {
     try {
-      if (!nuevoProducto || !nuevaCantidad || !tipoCantidad) {
-        setError("Por favor, completa todos los campos.");
+      if (!nuevoProducto || !nuevaCantidad || !tipoCantidad || !unidadesCantidad || precioProducto <= 0) {
+
+        setError("Por favor, completa todos los campos correctamente.");
         return;
       }
-      // Crear el objeto de productos
+      const nombreNormalizado = normalizeName(nuevoProducto);
+
       const nuevoProductoData = {
         nombre: nuevoProducto,
+        imagen: imagenProducto || "",
+        tipo: tipoCantidad,
         cantidad: nuevaCantidad,
-        tipo: tipoCantidad
+        unidades: unidadesCantidad,
+        precio: precioProducto,
       };
-
+      console.log(nuevoProductoData)
       const productosExistente = nevera.productos || [];
       const productosActualizados = [...productosExistente, nuevoProductoData];
-
-
-
+      console.log(productosActualizados)
       const requestData = {
-        productos: productosActualizados
+        productos: productosActualizados,
       };
-
 
       await fetch(`${SERVER_URL}/nevera/update/${neveraId}`, {
         method: "PUT",
@@ -106,18 +108,24 @@ const Nevera = () => {
       setNuevoProducto("");
       setNuevaCantidad("");
       setTipoCantidad("");
+      setUnidadesCantidad("");
+      setPrecioProducto(0);
       setError("");
+      setImagenProducto(null);
     } catch (error) {
       console.error("Error al agregar producto a la nevera:", error);
       setError("Error al agregar producto a la nevera");
     }
   };
+
   const editarProducto = (producto) => {
-    setProductoEditando(producto);
     setProductoEditando(producto);
     setNombreEditando(producto.nombre);
     setCantidadEditando(producto.cantidad);
     setTipoEditando(producto.tipo);
+    setUnidadesEditando(producto.unidades);
+    setPrecioEditando(producto.precio);
+    setImagenProducto(producto.imagen || null);
   };
 
   const handleCancelarEdicion = () => {
@@ -126,22 +134,16 @@ const Nevera = () => {
 
   const eliminarProducto = async (nombreProducto) => {
     try {
-
-      const nuevaListaProductos = nevera.productos.filter(producto => producto.nombre !== nombreProducto);
-
-
+      const nuevaListaProductos = nevera.productos.filter((producto) => producto.nombre !== nombreProducto);
       const neveraActualizada = { ...nevera, productos: nuevaListaProductos };
-
-
       setNevera(neveraActualizada);
 
-
       await fetch(`${SERVER_URL}/nevera/update/${neveraId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(neveraActualizada)
+        body: JSON.stringify(neveraActualizada),
       });
     } catch (error) {
       console.error("Error al eliminar el producto:", error);
@@ -150,47 +152,49 @@ const Nevera = () => {
 
   const handleGuardarCambios = async () => {
     try {
-      // Actualizar el estado de la nevera con los productos editados
       const neveraActualizada = {
-        ...nevera, productos: nevera.productos.map(producto => {
+        ...nevera,
+        productos: nevera.productos.map((producto) => {
           if (producto.nombre === productoEditando.nombre) {
             return {
               ...producto,
               nombre: nombreEditando,
               cantidad: cantidadEditando !== "" ? cantidadEditando : producto.cantidad,
-              tipo: tipoEditando !== "" ? tipoEditando : producto.tipo
+              tipo: tipoEditando !== "" ? tipoEditando : producto.tipo,
+              unidades: unidadesEditando !== "" ? unidadesEditando : producto.unidades,
+              precio: precioEditando !== 0 ? precioEditando : producto.precio,
+              imagen: imagenProducto || producto.imagen,
             };
           }
           return producto;
-        })
+        }),
       };
-
-      // Actualizar el estado local con la nevera actualizada
       setNevera(neveraActualizada);
 
-      // Enviar los datos actualizados al servidor
       await fetch(`${SERVER_URL}/nevera/update/${neveraId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(neveraActualizada)
+        body: JSON.stringify(neveraActualizada),
       });
 
-      // Reiniciar los estados de edición
       setProductoEditando(null);
       setNombreEditando("");
       setCantidadEditando("");
       setTipoEditando("");
+      setUnidadesEditando("");
+      setPrecioEditando(0);
+      setImagenProducto(null);
     } catch (error) {
       console.error("Error al guardar los cambios del producto:", error);
     }
   };
+
   useEffect(() => {
     obtenerIdNeveraUsuario();
     cargarnevera();
-
-  }, [neveraId]); // Se ejecuta solo una vez al cargar el componente
+  }, [neveraId]);
 
   return (
     <div className="container">
@@ -220,7 +224,7 @@ const Nevera = () => {
       {nevera.productos && (
         <div className="productos-container">
           <h2 className="subtitle">Productos en la Nevera</h2>
-          {error && <p className="error-message">{error}</p>} {/* Mostrar error si está presente */}
+          {error && <p className="error-message">{error}</p>}
           <ul className="productos-list">
             {nevera.productos.map((producto) => (
               <li key={producto.nombre} className="producto-item">
@@ -234,6 +238,7 @@ const Nevera = () => {
                     />
                     <input
                       type="number"
+                      placeholder="Cantidad"
                       value={cantidadEditando}
                       onChange={(e) => setCantidadEditando(e.target.value)}
                       className="input-edit"
@@ -244,10 +249,27 @@ const Nevera = () => {
                       className="select-edit"
                     >
                       <option value="">Selecciona el tipo</option>
-                      <option value="unidades">Unidades</option>
-                      <option value="kg">Kg</option>
-                      <option value="litros">Litros</option>
+                      <option value="Granos">Granos</option>
+                      <option value="Verduras">Verduras</option>
+                      <option value="Frutas">Frutas</option>
+                      <option value="Lacteos">Lácteos</option>
+                      <option value="Carne">Carne</option>
+                      <option value="Pescados">Pescados</option>
                     </select>
+                    <input
+                      type="text"
+                      placeholder="Unidades"
+                      value={unidadesEditando}
+                      onChange={(e) => setUnidadesEditando(e.target.value)}
+                      className="input-edit"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Precio"
+                      value={precioEditando}
+                      onChange={(e) => setPrecioEditando(e.target.value)}
+                      className="input-edit"
+                    />
                     <button onClick={handleCancelarEdicion} className="button-cancel">
                       Cancelar
                     </button>
@@ -257,7 +279,7 @@ const Nevera = () => {
                   </div>
                 ) : (
                   <>
-                    {producto.nombre} - {producto.cantidad} {producto.tipo}
+                    {producto.nombre} - {producto.cantidad} {producto.tipo} - {producto.unidades} - ${producto.precio}
                     <FaEdit
                       onClick={() => editarProducto(producto)}
                       style={{ cursor: "pointer", marginLeft: "5px" }}
@@ -286,6 +308,11 @@ const Nevera = () => {
             className="input-add"
           />
           <input
+            type="file"
+            onChange={(e) => setImagenProducto(e.target.files[0])}
+            className="input-add"
+          />
+          <input
             type="number"
             placeholder="Cantidad"
             value={nuevaCantidad}
@@ -298,10 +325,29 @@ const Nevera = () => {
             className="select-add"
           >
             <option value="">Selecciona el tipo</option>
-            <option value="unidades">Unidades</option>
-            <option value="kg">Kg</option>
-            <option value="litros">Litros</option>
+            <option value="Granos">Granos</option>
+            <option value="Verduras">Verduras</option>
+            <option value="Frutas">Frutas</option>
+            <option value="Lacteos">Lácteos</option>
+            <option value="Carne">Carne</option>
+            <option value="Pescados">Pescados</option>
           </select>
+          <select
+            value={unidadesCantidad}
+            onChange={(e) => setUnidadesCantidad(e.target.value)}
+            className="input-add"
+          >
+            <option value="KG">KG</option>
+            <option value="Litros">Litros</option>
+            <option value="Unidades">Unidades</option>
+          </select>
+          <input
+            type="number"
+            placeholder="Precio en €"
+            value={precioProducto}
+            onChange={(e) => setPrecioProducto(e.target.value)}
+            className="input-add"
+          />
           <button onClick={agregarProducto} className="button-add">
             Agregar Producto
           </button>
@@ -309,9 +355,6 @@ const Nevera = () => {
       </div>
     </div>
   );
-
-
-
 };
 
 export default Nevera;

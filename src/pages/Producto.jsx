@@ -4,22 +4,34 @@ import { FaSave } from "react-icons/fa";
 
 const Producto = ({ nevera, setNevera }) => {
   const { nombreProducto } = useParams();
+  
   const [productoEditado, setProductoEditado] = useState({
     nombre: nombreProducto,
     cantidad: "",
-    tipo: ""
+    tipo: "",
+    imagen: "", 
+    precio: 0 
   });
+
+  const normalizar = (name) => {
+    return removeAccents(name.toLowerCase());
+  };
 
   const GuardarCambios = () => {
  
     const productosActualizados = nevera.productos.map(p => {
       if (p.nombre === productoEditado.nombre) {
-        return { ...p, cantidad: productoEditado.cantidad, tipo: productoEditado.tipo };
+        return { ...p, cantidad: productoEditado.cantidad, tipo: productoEditado.tipo,imagen: productoEditado.imagen, precio: productoEditado.precio };
       }
       return p;
     });
     setNevera({ ...nevera, productos: productosActualizados });
   };
+
+
+
+
+
 
   return (
     <div>
@@ -38,6 +50,24 @@ const Producto = ({ nevera, setNevera }) => {
         <option value="kg">Kg</option>
         <option value="litros">Litros</option>
       </select>
+
+      <input
+        type="file"
+        onChange={handleImagenChange}
+        accept="image/*"
+      />
+      <input
+        type="text"
+        value={productoEditado.imagen}
+        onChange={e => setProductoEditado({ ...productoEditado, imagen: e.target.value })}
+        placeholder="URL de la imagen"
+      />
+      <input
+        type="number"
+        value={productoEditado.precio}
+        onChange={e => setProductoEditado({ ...productoEditado, precio: e.target.value })}
+        placeholder="Precio"
+      />
       <button onClick={GuardarCambios}><FaSave /> Guardar Cambios</button>
     </div>
   );
